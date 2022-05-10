@@ -1,0 +1,1 @@
+bool showCardContents = false;

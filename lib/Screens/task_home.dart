@@ -23,16 +23,17 @@ class TaskHome extends StatelessWidget {
                 "data",
                 style: Header,
               ),
-              TaskCard(),
-              TaskCard(),
-              TaskCard(),
-              TaskCard(),
-              TaskCard(),
-              TaskCard(),
-              TaskCard(),
-              TaskCard(),
-              TaskCard(),
-              TaskCard(),
+              // TaskCard(cardStatus: "cardStatus")
+              TaskCard(
+                  cardStatus: "cardStatus",
+                  taskNote: "Eat Banku",
+                  priorityColor: Color(0xffFF8183),
+                  subTaskList: "Yeah"),
+              TaskCard(
+                  cardStatus: "cardStatus",
+                  taskNote: "random",
+                  priorityColor: Color(0xffFDD064),
+                  subTaskList: "Yeteey")
             ],
           )
         ],
