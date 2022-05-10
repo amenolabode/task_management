@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_management/styles.dart';
 
 class TaskCard extends StatelessWidget {
   const TaskCard({Key? key}) : super(key: key);
@@ -6,15 +7,15 @@ class TaskCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    // double width = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.fromLTRB(16, 4, 16, 16),
       child: Container(
-        padding: EdgeInsets.all(8),
-        height: height * 0.15,
+        padding: const EdgeInsets.all(16),
+        height: height * 0.17,
         decoration: BoxDecoration(
-          color: Color(0xff272B34),
+          color: const Color(0xff272B34),
           borderRadius: BorderRadius.circular(6),
         ),
         child: Column(
@@ -24,13 +25,13 @@ class TaskCard extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  padding: EdgeInsets.fromLTRB(6, 3, 6, 3),
+                  padding: const EdgeInsets.fromLTRB(6, 3, 6, 3),
                   decoration: BoxDecoration(
-                      color: Color(0xffFDCC65),
+                      color: const Color(0xffFDCC65),
                       borderRadius: BorderRadius.circular(4)),
-                  child: Text("data"),
+                  child: const Text("data"),
                 ),
-                Expanded(
+                const Expanded(
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: Icon(
@@ -41,15 +42,9 @@ class TaskCard extends StatelessWidget {
                 )
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 24, 0, 16),
-              child: Text(
-                "Study for Exam",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700),
-              ),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(0, 24, 0, 16),
+              child: Text("Study for Exam", style: cardHeader),
             ),
             Container(
                 height: 16,
