@@ -17,3 +17,15 @@ const TextStyle subTasks = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w400,
     color: Colors.white);
+
+const TextStyle bodyTextStyle = TextStyle(
+    fontFamily: "Poppins",
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: Colors.white);
+
+const TextStyle bodyTextStyle_grey = TextStyle(
+    fontFamily: "Poppins",
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: Colors.white60);
