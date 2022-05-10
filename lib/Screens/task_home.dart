@@ -18,24 +18,53 @@ class TaskHome extends StatelessWidget {
           ),
           ListView(
             scrollDirection: Axis.vertical,
-            children: const [
-              Text(
-                "data",
-                style: Header,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 24, 0, 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      "Today's Tasks",
+                      style: Header,
+                    ),
+                    Text(
+                      "4 of 7 completed.",
+                      style: bodyTextStyle_grey,
+                    ),
+                  ],
+                ),
               ),
-              // TaskCard(cardStatus: "cardStatus")
-              TaskCard(
-                  cardStatus: "cardStatus",
-                  taskNote: "Eat Banku",
-                  priorityColor: Color(0xffFF8183),
-                  subTaskList: "Yeah"),
-              TaskCard(
-                  cardStatus: "cardStatus",
-                  taskNote: "random",
-                  priorityColor: Color(0xffFDD064),
-                  subTaskList: "Yeteey")
+              const TaskCard(
+                cardStatus: "High Priority",
+                taskNote: "Eat Banku",
+                priorityColor: Color(0xffFF8183),
+                subTaskListOne: "Yeah",
+                subTaskListTwo: "Durrhhh",
+              ),
+              const TaskCard(
+                cardStatus: "Normal",
+                taskNote: "random",
+                priorityColor: Color(0xffFDD064),
+                subTaskListOne: "Yeteey",
+                subTaskListTwo: "Explain this",
+              ),
+              const TaskCard(
+                cardStatus: "Normal",
+                taskNote: "random",
+                priorityColor: Color(0xffFDD064),
+                subTaskListOne: "Yeteey",
+                subTaskListTwo: "Explain this",
+              ),
+              const TaskCard(
+                cardStatus: "Normal",
+                taskNote: "random",
+                priorityColor: Color(0xffFDD064),
+                subTaskListOne: "Yeteey",
+                subTaskListTwo: "Explain this",
+              ),
             ],
-          )
+          ),
         ],
       ),
     );
