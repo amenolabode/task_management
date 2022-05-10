@@ -11,3 +11,9 @@ const TextStyle cardHeader = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.w600,
     color: Colors.white);
+
+const TextStyle subTasks = TextStyle(
+    fontFamily: "Poppins",
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: Colors.white);
