@@ -13,7 +13,7 @@ class TaskList extends StatelessWidget {
       children: [
         Container(
           width: 2,
-          height: 24,
+          height: 32,
           decoration: const BoxDecoration(color: Colors.white70),
         ),
         Row(

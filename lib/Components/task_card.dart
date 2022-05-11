@@ -46,7 +46,7 @@ class _TaskCardState extends State<TaskCard> {
           padding: const EdgeInsets.all(16),
           // height: height * 0.2,
           decoration: BoxDecoration(
-            color: const Color(0xff272B34),
+            color: cardColor,
             borderRadius: BorderRadius.circular(6),
           ),
           child: Column(
@@ -62,17 +62,24 @@ class _TaskCardState extends State<TaskCard> {
                         borderRadius: BorderRadius.circular(4)),
                     child: Text(widget.cardStatus),
                   ),
-                  Align(
-                    alignment: Alignment.centerRight,
+                  Expanded(
                     child: Row(
-                      children: const [
-                        Icon(
-                          Icons.article,
-                          color: Color(0xff75D9FF),
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(right: 8),
+                          child: Icon(
+                            Icons.article,
+                            color: articleColor,
+                          ),
                         ),
-                        Icon(
-                          Icons.timelapse,
-                          color: Color(0xffB774F0),
+                        Visibility(
+                          visible: visibilityToggle,
+                          child: const Icon(
+                            Icons.timelapse,
+                            color: primaryColor,
+                          ),
                         ),
                       ],
                     ),

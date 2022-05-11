@@ -29,3 +29,8 @@ const TextStyle bodyTextStyleGrey = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w400,
     color: Colors.white60);
+
+const Color primaryColor = Color(0xff7D0FEC);
+const Color yellowColor = Color(0xff7D0FEC);
+const Color cardColor = Color(0xff272B34);
+const Color articleColor = Color(0xff75D9FF);
