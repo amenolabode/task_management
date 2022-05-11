@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:task_management/Components/task_card.dart';
+import 'package:task_management/Screens/task_details/task_details.dart';
 import 'package:task_management/Screens/task_view.dart';
 
 class MyApp extends StatelessWidget {
@@ -13,7 +13,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const TaskHome(),
+      routes: {
+        '/tasklist': (context) => const TaskDetails(),
+        '/homepage': (context) => const TaskHome(),
+      },
+      home: Stack(children: [TaskHome()]),
     );
   }
 }
