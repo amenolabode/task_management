@@ -30,6 +30,18 @@ const TextStyle bodyTextStyle = TextStyle(
     fontWeight: FontWeight.w400,
     color: Colors.white);
 
+const TextStyle body2TextStyle = TextStyle(
+    fontFamily: "Poppins",
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: fadedPrimaryColor);
+
+const TextStyle bodyTextStylePurple = TextStyle(
+    fontFamily: "Poppins",
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: fadedPrimaryColor);
+
 const TextStyle bodyBoldStyle = TextStyle(
     fontFamily: "Poppins",
     fontSize: 16,

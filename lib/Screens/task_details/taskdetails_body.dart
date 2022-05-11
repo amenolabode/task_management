@@ -1,12 +1,25 @@
+// ignore_for_file: unnecessary_const
+
 import 'package:flutter/material.dart';
+import 'package:task_management/Components/document/add_document.dart';
 import 'package:task_management/Components/document/document_card.dart';
 import 'package:task_management/Components/priority_card.dart';
+import 'package:task_management/Components/task%20components/task_list.dart';
 import 'package:task_management/styles.dart';
 
-class TaskDetailsBody extends StatelessWidget {
-  const TaskDetailsBody({
+class TaskDetailsBody extends StatefulWidget {
+  TaskDetailsBody({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<TaskDetailsBody> createState() => _TaskDetailsBodyState();
+}
+
+class _TaskDetailsBodyState extends State<TaskDetailsBody> {
+  List<Widget> taskList = [];
+
+  TextEditingController taskEextEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +36,7 @@ class TaskDetailsBody extends StatelessWidget {
               children: [
                 const Text(
                   "Create a design system",
-                  style: cardHeader,
+                  style: header,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
@@ -55,16 +68,48 @@ class TaskDetailsBody extends StatelessWidget {
                   ),
                 ),
                 const Padding(
-                  padding: EdgeInsets.only(top: 32.0),
+                  padding: EdgeInsets.fromLTRB(0, 32, 0, 16),
                   child: Text(
                     "Attachments",
                     style: sectionHeader,
                   ),
                 ),
-                DocumentCard(
-                  documentSize: "2mb",
-                  documentName: "Name.pdf",
-                  documentTypeImage: "assets/images/doc.png",
+                Row(
+                  children: const [
+                    DocumentCard(
+                      documentSize: "2mb",
+                      documentName: "Name.pdf",
+                      documentTypeImage: "assets/images/doc.png",
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 16.0),
+                      child: AddDocument(),
+                    )
+                  ],
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(top: 32.0),
+                  child: Text(
+                    "Checklist",
+                    style: sectionHeader,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Column(
+                    children: taskList,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 56),
+                  child: TextButton(
+                      onPressed: () {
+                        showAddListItem(context);
+                      },
+                      child: const Text(
+                        "+ add task item",
+                        style: bodyTextStylePurple,
+                      )),
                 )
               ],
             ),
@@ -72,5 +117,58 @@ class TaskDetailsBody extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  //MARK: show the add list item dialog
+  void showAddListItem(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Wrap(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 24, 16, 40),
+              child: TextField(
+                controller: taskEextEditingController,
+                decoration: InputDecoration(hintText: "Input Task"),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 32.0),
+              child: Center(
+                child: TextButton(
+                  onPressed: () {
+                    addListItem();
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: primaryColor,
+                        borderRadius: BorderRadius.circular(50)),
+                    child: const Padding(
+                      padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                      child: const Text(
+                        "Save Task",
+                        style: bodyTextStyle,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            )
+          ],
+        );
+      },
+    );
+  }
+
+  void addListItem() {
+    String taskName = taskEextEditingController.text.toString().trim();
+    var listItem = Padding(
+      padding: EdgeInsets.only(bottom: 8.0),
+      child: TaskList(taskListText: taskName),
+    );
+    taskList.add(listItem);
+    setState(() {});
   }
 }
