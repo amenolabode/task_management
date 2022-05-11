@@ -20,7 +20,10 @@ class TaskList extends StatelessWidget {
           children: [
             Row(
               children: [
-                const SubListCheckbox(),
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(4, 0, 4, 0),
+                  child: SubListCheckbox(),
+                ),
                 Text(
                   taskListText,
                   style: subTasks,

@@ -16,10 +16,11 @@ class DocumentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.4,
+      width: MediaQuery.of(context).size.width * 0.44,
       // height: 64,
       decoration: BoxDecoration(
-          color: Color(0xffBDCDEE), borderRadius: BorderRadius.circular(4)),
+          color: const Color(0xffBDCDEE),
+          borderRadius: BorderRadius.circular(4)),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(12, 12, 8, 12),
         child: Row(

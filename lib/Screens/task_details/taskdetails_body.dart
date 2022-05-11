@@ -1,6 +1,10 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:task_management/Components/document/add_document.dart';
 import 'package:task_management/Components/document/document_card.dart';
 import 'package:task_management/Components/priority_card.dart';
+import 'package:task_management/Components/task%20components/task_list.dart';
 import 'package:task_management/styles.dart';
 
 class TaskDetailsBody extends StatelessWidget {
@@ -23,7 +27,7 @@ class TaskDetailsBody extends StatelessWidget {
               children: [
                 const Text(
                   "Create a design system",
-                  style: cardHeader,
+                  style: header,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
@@ -55,16 +59,89 @@ class TaskDetailsBody extends StatelessWidget {
                   ),
                 ),
                 const Padding(
-                  padding: EdgeInsets.only(top: 32.0),
+                  padding: EdgeInsets.fromLTRB(0, 32, 0, 16),
                   child: Text(
                     "Attachments",
                     style: sectionHeader,
                   ),
                 ),
-                DocumentCard(
-                  documentSize: "2mb",
-                  documentName: "Name.pdf",
-                  documentTypeImage: "assets/images/doc.png",
+                Row(
+                  children: const [
+                    DocumentCard(
+                      documentSize: "2mb",
+                      documentName: "Name.pdf",
+                      documentTypeImage: "assets/images/doc.png",
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 16.0),
+                      child: AddDocument(),
+                    )
+                  ],
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(top: 32.0),
+                  child: Text(
+                    "Checklist",
+                    style: sectionHeader,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Column(
+                    children: const [
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 8.0),
+                        child: TaskList(taskListText: "taskListText"),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 8.0),
+                        child: TaskList(taskListText: "taskListText"),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 8.0),
+                        child: TaskList(taskListText: "taskListText"),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 8.0),
+                        child: TaskList(taskListText: "taskListText"),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 8.0),
+                        child: TaskList(taskListText: "taskListText"),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 56),
+                  child: TextButton(
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) {
+                            return Wrap(
+                              children: [
+                                ListTile(
+                                  leading: Icon(Icons.share),
+                                  title: Text('Share'),
+                                ),
+                                ListTile(
+                                  leading: Icon(Icons.copy),
+                                  title: Text('Copy Link'),
+                                ),
+                                ListTile(
+                                  leading: Icon(Icons.edit),
+                                  title: Text('Edit'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      child: Text(
+                        "+ add task item",
+                        style: bodyTextStylePurple,
+                      )),
                 )
               ],
             ),
