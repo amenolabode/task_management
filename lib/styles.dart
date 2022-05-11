@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const TextStyle Header = TextStyle(
+const TextStyle header = TextStyle(
     fontFamily: "Poppins",
     fontSize: 32,
     fontWeight: FontWeight.w600,
@@ -24,7 +24,7 @@ const TextStyle bodyTextStyle = TextStyle(
     fontWeight: FontWeight.w400,
     color: Colors.white);
 
-const TextStyle bodyTextStyle_grey = TextStyle(
+const TextStyle bodyTextStyleGrey = TextStyle(
     fontFamily: "Poppins",
     fontSize: 16,
     fontWeight: FontWeight.w400,
