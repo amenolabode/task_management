@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:task_management/Components/more_vertical.dart';
+import 'package:task_management/Components/priority_card.dart';
 import 'package:task_management/Components/task%20components/task_list.dart';
-// import 'package:task_management/Components/task_list.dart';
 import 'package:task_management/styles.dart';
-// import 'package:task_management/globals.dart';
 
 class TaskCard extends StatefulWidget {
   final String cardStatus;
@@ -56,13 +55,9 @@ class _TaskCardState extends State<TaskCard> {
             children: [
               Row(
                 children: [
-                  Container(
-                    padding: const EdgeInsets.fromLTRB(6, 3, 6, 3),
-                    decoration: BoxDecoration(
-                        color: widget.priorityColor,
-                        borderRadius: BorderRadius.circular(4)),
-                    child: Text(widget.cardStatus),
-                  ),
+                  PriorityCard(
+                      cardStatus: widget.cardStatus,
+                      priorityColor: widget.priorityColor),
                   Expanded(
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -88,7 +83,7 @@ class _TaskCardState extends State<TaskCard> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 24, 0, 8),
+                padding: const EdgeInsets.fromLTRB(0, 32, 0, 4),
                 child: Text(widget.taskNote, style: cardHeader),
               ),
               Visibility(

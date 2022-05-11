@@ -12,6 +12,12 @@ const TextStyle cardHeader = TextStyle(
     fontWeight: FontWeight.w600,
     color: Colors.white);
 
+const TextStyle sectionHeader = TextStyle(
+    fontFamily: "Poppins",
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
+    color: Colors.white);
+
 const TextStyle subTasks = TextStyle(
     fontFamily: "Poppins",
     fontSize: 16,
@@ -30,10 +36,23 @@ const TextStyle bodyBoldStyle = TextStyle(
     fontWeight: FontWeight.w600,
     color: Colors.white);
 
+const TextStyle darkBoldStyle = TextStyle(
+    fontFamily: "Poppins",
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: backgroundColor);
+
+const TextStyle darkBody2Style = TextStyle(
+    fontFamily: "Poppins",
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: backgroundColor);
+
 const TextStyle bodyTextStyleGrey = TextStyle(
     fontFamily: "Poppins",
     fontSize: 16,
     fontWeight: FontWeight.w400,
+    height: 1.4,
     color: Colors.white60);
 
 const Color primaryColor = Color(0xff7D0FEC);

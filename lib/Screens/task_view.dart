@@ -17,11 +17,11 @@ class TaskHome extends StatelessWidget {
             MaterialPageRoute(builder: (context) => const TaskDetails()),
           );
         },
-        label: Text(
+        label: const Text(
           "Add new",
           style: bodyBoldStyle,
         ),
-        icon: Icon(Icons.add),
+        icon: const Icon(Icons.add),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4),
         ),
