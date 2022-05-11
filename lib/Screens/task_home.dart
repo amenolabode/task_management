@@ -26,11 +26,11 @@ class TaskHome extends StatelessWidget {
                   children: const [
                     Text(
                       "Today's Tasks",
-                      style: Header,
+                      style: header,
                     ),
                     Text(
                       "4 of 7 completed.",
-                      style: bodyTextStyle_grey,
+                      style: bodyTextStyleGrey,
                     ),
                   ],
                 ),
