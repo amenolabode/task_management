@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         '/tasklist': (context) => const TaskDetails(),
         '/homepage': (context) => const TaskHome(),
       },
-      home: Stack(children: [TaskHome()]),
+      home: Stack(children: const [TaskHome()]),
     );
   }
 }
