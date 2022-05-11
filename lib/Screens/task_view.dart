@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:task_management/Components/task_card.dart';
+import 'package:task_management/Components/task%20components/task_card.dart';
+import 'package:task_management/Screens/task_details/task_details.dart';
+// import 'package:task_management/Components/task_card.dart';
 import 'package:task_management/styles.dart';
 
 class TaskHome extends StatelessWidget {
@@ -8,9 +10,24 @@ class TaskHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text("Task Manager"),
-      // ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const TaskDetails()),
+          );
+        },
+        label: Text(
+          "Add new",
+          style: bodyBoldStyle,
+        ),
+        icon: Icon(Icons.add),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+        ),
+        backgroundColor: primaryColor,
+        elevation: 0,
+      ),
       body: Stack(
         children: [
           Container(
@@ -38,28 +55,42 @@ class TaskHome extends StatelessWidget {
               const TaskCard(
                 cardStatus: "High Priority",
                 taskNote: "Eat Banku",
-                priorityColor: Color(0xffFF8183),
+                priorityColor: redColor,
                 subTaskListOne: "Yeah",
                 subTaskListTwo: "Durrhhh",
               ),
               const TaskCard(
                 cardStatus: "Normal",
                 taskNote: "random",
-                priorityColor: Color(0xffFDD064),
+                priorityColor: yellowColor,
                 subTaskListOne: "Yeteey",
                 subTaskListTwo: "Explain this",
               ),
               const TaskCard(
                 cardStatus: "Normal",
                 taskNote: "random",
-                priorityColor: Color(0xffFDD064),
+                priorityColor: yellowColor,
                 subTaskListOne: "Yeteey",
                 subTaskListTwo: "Explain this",
               ),
               const TaskCard(
                 cardStatus: "Normal",
                 taskNote: "random",
-                priorityColor: Color(0xffFDD064),
+                priorityColor: yellowColor,
+                subTaskListOne: "Yeteey",
+                subTaskListTwo: "Explain this",
+              ),
+              const TaskCard(
+                cardStatus: "Normal",
+                taskNote: "random",
+                priorityColor: yellowColor,
+                subTaskListOne: "Yeteey",
+                subTaskListTwo: "Explain this",
+              ),
+              const TaskCard(
+                cardStatus: "Normal",
+                taskNote: "random",
+                priorityColor: yellowColor,
                 subTaskListOne: "Yeteey",
                 subTaskListTwo: "Explain this",
               ),

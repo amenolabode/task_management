@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_management/Components/more_vertical.dart';
-import 'package:task_management/Components/task_list.dart';
+import 'package:task_management/Components/task%20components/task_list.dart';
+// import 'package:task_management/Components/task_list.dart';
 import 'package:task_management/styles.dart';
 // import 'package:task_management/globals.dart';
 
@@ -78,7 +79,7 @@ class _TaskCardState extends State<TaskCard> {
                           visible: visibilityToggle,
                           child: const Icon(
                             Icons.timelapse,
-                            color: primaryColor,
+                            color: fadedPrimaryColor,
                           ),
                         ),
                       ],
