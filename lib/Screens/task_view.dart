@@ -11,12 +11,7 @@ class TaskHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const TaskDetails()),
-          );
-        },
+        onPressed: () {},
         label: const Text(
           "Add new",
           style: bodyBoldStyle,

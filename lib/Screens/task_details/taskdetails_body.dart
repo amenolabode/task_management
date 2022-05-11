@@ -1,4 +1,4 @@
-import 'dart:html';
+// ignore_for_file: unnecessary_const
 
 import 'package:flutter/material.dart';
 import 'package:task_management/Components/document/add_document.dart';
@@ -7,10 +7,19 @@ import 'package:task_management/Components/priority_card.dart';
 import 'package:task_management/Components/task%20components/task_list.dart';
 import 'package:task_management/styles.dart';
 
-class TaskDetailsBody extends StatelessWidget {
-  const TaskDetailsBody({
+class TaskDetailsBody extends StatefulWidget {
+  TaskDetailsBody({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<TaskDetailsBody> createState() => _TaskDetailsBodyState();
+}
+
+class _TaskDetailsBodyState extends State<TaskDetailsBody> {
+  List<Widget> taskList = [];
+
+  TextEditingController taskEextEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -88,57 +97,16 @@ class TaskDetailsBody extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Column(
-                    children: const [
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 8.0),
-                        child: TaskList(taskListText: "taskListText"),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 8.0),
-                        child: TaskList(taskListText: "taskListText"),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 8.0),
-                        child: TaskList(taskListText: "taskListText"),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 8.0),
-                        child: TaskList(taskListText: "taskListText"),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 8.0),
-                        child: TaskList(taskListText: "taskListText"),
-                      ),
-                    ],
+                    children: taskList,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 56),
                   child: TextButton(
                       onPressed: () {
-                        showModalBottomSheet(
-                          context: context,
-                          builder: (context) {
-                            return Wrap(
-                              children: [
-                                ListTile(
-                                  leading: Icon(Icons.share),
-                                  title: Text('Share'),
-                                ),
-                                ListTile(
-                                  leading: Icon(Icons.copy),
-                                  title: Text('Copy Link'),
-                                ),
-                                ListTile(
-                                  leading: Icon(Icons.edit),
-                                  title: Text('Edit'),
-                                ),
-                              ],
-                            );
-                          },
-                        );
+                        showAddListItem(context);
                       },
-                      child: Text(
+                      child: const Text(
                         "+ add task item",
                         style: bodyTextStylePurple,
                       )),
@@ -149,5 +117,58 @@ class TaskDetailsBody extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  //MARK: show the add list item dialog
+  void showAddListItem(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Wrap(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 24, 16, 40),
+              child: TextField(
+                controller: taskEextEditingController,
+                decoration: InputDecoration(hintText: "Input Task"),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 32.0),
+              child: Center(
+                child: TextButton(
+                  onPressed: () {
+                    addListItem();
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: primaryColor,
+                        borderRadius: BorderRadius.circular(50)),
+                    child: const Padding(
+                      padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                      child: const Text(
+                        "Save Task",
+                        style: bodyTextStyle,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            )
+          ],
+        );
+      },
+    );
+  }
+
+  void addListItem() {
+    String taskName = taskEextEditingController.text.toString().trim();
+    var listItem = Padding(
+      padding: EdgeInsets.only(bottom: 8.0),
+      child: TaskList(taskListText: taskName),
+    );
+    taskList.add(listItem);
+    setState(() {});
   }
 }

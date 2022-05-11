@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:task_management/Screens/task_details/taskdetails_body.dart';
-import 'package:task_management/Screens/task_view.dart';
 import 'package:task_management/styles.dart';
 
 class TaskDetails extends StatelessWidget {
@@ -46,6 +45,6 @@ class TaskDetails extends StatelessWidget {
           ),
           shadowColor: null,
         ),
-        body: const TaskDetailsBody());
+        body: TaskDetailsBody());
   }
 }

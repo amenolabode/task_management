@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:task_management/Components/more_vertical.dart';
 import 'package:task_management/Components/priority_card.dart';
 import 'package:task_management/Components/task%20components/task_list.dart';
+import 'package:task_management/Screens/task_details/task_details.dart';
 import 'package:task_management/styles.dart';
 
 class TaskCard extends StatefulWidget {
@@ -98,7 +99,25 @@ class _TaskCardState extends State<TaskCard> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 16, 0, 4),
                 child: Visibility(
-                    visible: !visibilityToggle, child: const MoreVert()),
+                  visible: !visibilityToggle,
+                  child: Row(
+                    children: [
+                      MoreVert(),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const TaskDetails()),
+                            );
+                          },
+                          child: Text(
+                            "view",
+                            style: bodyTextStyle,
+                          ))
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
