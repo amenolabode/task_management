@@ -8,24 +8,6 @@ class TaskDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // floatingActionButton: FloatingActionButton.extended(
-        //   onPressed: () {
-        //     Navigator.push(
-        //       context,
-        //       MaterialPageRoute(builder: (context) => const TaskHome()),
-        //     );
-        //   },
-        //   label: const Text(
-        //     "Add new",
-        //     style: bodyBoldStyle,
-        //   ),
-        //   icon: const Icon(Icons.add),
-        //   shape: RoundedRectangleBorder(
-        //     borderRadius: BorderRadius.circular(4),
-        //   ),
-        //   backgroundColor: primaryColor,
-        //   elevation: 0,
-        // ),
         appBar: AppBar(
           backgroundColor: backgroundColor,
           elevation: 0,
@@ -45,6 +27,6 @@ class TaskDetails extends StatelessWidget {
           ),
           shadowColor: null,
         ),
-        body: TaskDetailsBody());
+        body: const TaskDetailsBody());
   }
 }

@@ -37,10 +37,9 @@ class _TaskCardState extends State<TaskCard> {
       padding: const EdgeInsets.fromLTRB(16, 4, 16, 16),
       child: GestureDetector(
         onTap: () {
-          setState(
-            () {
-              visibilityToggle = !visibilityToggle;
-            },
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const TaskDetails()),
           );
         },
         child: Container(
@@ -84,7 +83,7 @@ class _TaskCardState extends State<TaskCard> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 32, 0, 4),
+                padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
                 child: Text(widget.taskNote, style: cardHeader),
               ),
               Visibility(
@@ -97,26 +96,18 @@ class _TaskCardState extends State<TaskCard> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 16, 0, 4),
+                padding: const EdgeInsets.fromLTRB(0, 12, 0, 8),
                 child: Visibility(
-                  visible: !visibilityToggle,
-                  child: Row(
-                    children: [
-                      MoreVert(),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const TaskDetails()),
-                            );
+                  // visible: !visibilityToggle,
+                  child: GestureDetector(
+                      onTap: () {
+                        setState(
+                          () {
+                            visibilityToggle = !visibilityToggle;
                           },
-                          child: Text(
-                            "view",
-                            style: bodyTextStyle,
-                          ))
-                    ],
-                  ),
+                        );
+                      },
+                      child: MoreVert()),
                 ),
               ),
             ],
