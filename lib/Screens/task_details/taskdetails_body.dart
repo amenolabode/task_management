@@ -8,7 +8,7 @@ import 'package:task_management/Components/task%20components/task_list.dart';
 import 'package:task_management/styles.dart';
 
 class TaskDetailsBody extends StatefulWidget {
-  TaskDetailsBody({
+  const TaskDetailsBody({
     Key? key,
   }) : super(key: key);
 
@@ -18,8 +18,7 @@ class TaskDetailsBody extends StatefulWidget {
 
 class _TaskDetailsBodyState extends State<TaskDetailsBody> {
   List<Widget> taskList = [];
-
-  TextEditingController taskEextEditingController = TextEditingController();
+  TextEditingController textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -129,8 +128,8 @@ class _TaskDetailsBodyState extends State<TaskDetailsBody> {
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 24, 16, 40),
               child: TextField(
-                controller: taskEextEditingController,
-                decoration: InputDecoration(hintText: "Input Task"),
+                controller: textEditingController,
+                decoration: const InputDecoration(hintText: "Input Task"),
               ),
             ),
             Padding(
@@ -163,9 +162,9 @@ class _TaskDetailsBodyState extends State<TaskDetailsBody> {
   }
 
   void addListItem() {
-    String taskName = taskEextEditingController.text.toString().trim();
+    String taskName = textEditingController.text.toString().trim();
     var listItem = Padding(
-      padding: EdgeInsets.only(bottom: 8.0),
+      padding: const EdgeInsets.only(bottom: 8.0),
       child: TaskList(taskListText: taskName),
     );
     taskList.add(listItem);

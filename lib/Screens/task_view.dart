@@ -1,96 +1,124 @@
 import 'package:flutter/material.dart';
 import 'package:task_management/Components/task%20components/task_card.dart';
+import 'package:task_management/Screens/task_view_body.dart';
 import 'package:task_management/styles.dart';
 
-class TaskHome extends StatelessWidget {
+class TaskHome extends StatefulWidget {
   const TaskHome({Key? key}) : super(key: key);
+
+  @override
+  State<TaskHome> createState() => _TaskHomeState();
+}
+
+class _TaskHomeState extends State<TaskHome> {
+  TextEditingController textCollected = TextEditingController();
+  List<Widget> taskCards = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
-        label: const Text(
-          "Add new",
-          style: bodyBoldStyle,
-        ),
-        icon: const Icon(Icons.add),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
-        ),
-        backgroundColor: primaryColor,
-        elevation: 0,
-      ),
-      body: Stack(
-        children: [
-          Container(
-            color: Colors.black,
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            addTasks(context);
+          },
+          label: const Text(
+            "Add task",
+            style: bodyBoldStyle,
           ),
-          ListView(
-            scrollDirection: Axis.vertical,
+          icon: const Icon(Icons.add),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4),
+          ),
+          backgroundColor: primaryColor,
+          elevation: 0,
+        ),
+        body: TaskHomeBody(
+          TaskCards: taskCards,
+        ));
+  }
+
+  Future<dynamic> addTasks(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Wrap(
             children: [
+              // checkListWidget("checkListText"),
               Padding(
-                padding: const EdgeInsets.fromLTRB(16, 24, 0, 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      "Today's Tasks",
-                      style: header,
-                    ),
-                    Text(
-                      "4 of 7 completed.",
-                      style: bodyTextStyleGrey,
-                    ),
-                  ],
+                padding: EdgeInsets.fromLTRB(0, 24, 0, 40),
+                child: TextField(
+                  controller: textCollected,
+                  decoration: InputDecoration(hintText: "Input Task Name"),
                 ),
               ),
-              const TaskCard(
-                cardStatus: "High Priority",
-                taskNote: "Eat Banku",
-                priorityColor: redColor,
-                subTaskListOne: "Yeah",
-                subTaskListTwo: "Durrhhh",
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                  child: TextButton(
+                    onPressed: () {},
+                    child: const Text("+ Add checklist"),
+                  ),
+                ),
               ),
-              const TaskCard(
-                cardStatus: "Normal",
-                taskNote: "random",
-                priorityColor: yellowColor,
-                subTaskListOne: "Yeteey",
-                subTaskListTwo: "Explain this",
-              ),
-              const TaskCard(
-                cardStatus: "Normal",
-                taskNote: "random",
-                priorityColor: yellowColor,
-                subTaskListOne: "Yeteey",
-                subTaskListTwo: "Explain this",
-              ),
-              const TaskCard(
-                cardStatus: "Normal",
-                taskNote: "random",
-                priorityColor: yellowColor,
-                subTaskListOne: "Yeteey",
-                subTaskListTwo: "Explain this",
-              ),
-              const TaskCard(
-                cardStatus: "Normal",
-                taskNote: "random",
-                priorityColor: yellowColor,
-                subTaskListOne: "Yeteey",
-                subTaskListTwo: "Explain this",
-              ),
-              const TaskCard(
-                cardStatus: "Normal",
-                taskNote: "random",
-                priorityColor: yellowColor,
-                subTaskListOne: "Yeteey",
-                subTaskListTwo: "Explain this",
-              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 32.0),
+                child: Center(
+                  child: TextButton(
+                    onPressed: () {
+                      addTaskItem();
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: primaryColor,
+                          borderRadius: BorderRadius.circular(50)),
+                      child: const Padding(
+                        padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                        child: Text(
+                          "Save Task",
+                          style: bodyTextStyle,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
-        ],
-      ),
+        );
+      },
     );
+  }
+
+  Row checkListWidget(String checkListText) {
+    return Row(
+      children: [
+        Text(
+          checkListText,
+          style: darkBody2Style,
+        ),
+        const Expanded(
+          child: Icon(
+            Icons.remove_circle,
+            color: redColor,
+          ),
+        )
+      ],
+    );
+  }
+
+  void addTaskItem() {
+    String taskCardUpdate = textCollected.text.toString().trim();
+    var taskUIUpdate = TaskCard(
+      cardStatus: "cardStatus",
+      taskNote: taskCardUpdate,
+      priorityColor: redColor,
+      subTaskListOne: "subTaskListOne",
+      subTaskListTwo: "subTaskListTwo",
+    );
+    taskCards.add(taskUIUpdate);
+    setState(() {});
   }
 }
