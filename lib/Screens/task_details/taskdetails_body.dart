@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:task_management/Components/document/add_document.dart';
 import 'package:task_management/Components/document/document_card.dart';
 import 'package:task_management/Components/priority_card.dart';
+import 'package:task_management/Components/task%20components/task_card.dart';
 import 'package:task_management/Components/task%20components/task_list.dart';
 import 'package:task_management/styles.dart';
 
 class TaskDetailsBody extends StatefulWidget {
-  const TaskDetailsBody({
-    Key? key,
-  }) : super(key: key);
+  TaskDetailsBody({Key? key, required this.taskCard}) : super(key: key);
+  final TaskCard taskCard;
 
   @override
   State<TaskDetailsBody> createState() => _TaskDetailsBodyState();
@@ -33,8 +33,8 @@ class _TaskDetailsBodyState extends State<TaskDetailsBody> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  "Create a design system",
+                Text(
+                  widget.taskCard.taskNote,
                   style: header,
                 ),
                 Padding(

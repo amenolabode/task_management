@@ -26,7 +26,7 @@ class TaskHomeBody extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
                     Text(
-                      "Today's Tasks",
+                      "Your Tasks",
                       style: header,
                     ),
                     Text(

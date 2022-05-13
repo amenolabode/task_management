@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        '/tasklist': (context) => const TaskDetails(),
+        //'/tasklist': (context) => const TaskDetails(),
         '/homepage': (context) => const TaskHome(),
       },
       home: Stack(children: const [TaskHome()]),
