@@ -37,9 +37,16 @@ class _TaskCardState extends State<TaskCard> {
       padding: const EdgeInsets.fromLTRB(16, 4, 16, 16),
       child: GestureDetector(
         onTap: () {
+          var card = TaskCard(
+              cardStatus: widget.cardStatus,
+              taskNote: widget.taskNote,
+              priorityColor: widget.priorityColor,
+              subTaskListOne: widget.subTaskListOne,
+              subTaskListTwo: widget.subTaskListTwo);
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const TaskDetails()),
+            MaterialPageRoute(
+                builder: (context) => TaskDetails(taskCard: card)),
           );
         },
         child: Container(

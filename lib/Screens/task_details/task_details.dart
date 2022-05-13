@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:task_management/Components/task%20components/task_card.dart';
 import 'package:task_management/Screens/task_details/taskdetails_body.dart';
 import 'package:task_management/styles.dart';
 
 class TaskDetails extends StatelessWidget {
-  const TaskDetails({Key? key}) : super(key: key);
+  TaskDetails({Key? key, required this.taskCard}) : super(key: key);
+  final TaskCard taskCard;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,8 @@ class TaskDetails extends StatelessWidget {
           ),
           shadowColor: null,
         ),
-        body: const TaskDetailsBody());
+        body: TaskDetailsBody(
+          taskCard: taskCard,
+        ));
   }
 }

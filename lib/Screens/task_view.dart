@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_management/Components/task%20components/task_card.dart';
 import 'package:task_management/Screens/task_view_body.dart';
+import 'package:task_management/Screens/util.dart';
 import 'package:task_management/styles.dart';
 
 class TaskHome extends StatefulWidget {
@@ -114,11 +115,17 @@ class _TaskHomeState extends State<TaskHome> {
     var taskUIUpdate = TaskCard(
       cardStatus: "cardStatus",
       taskNote: taskCardUpdate,
-      priorityColor: redColor,
+      priorityColor: colorMatcher(PriorityType.HIGH.name),
       subTaskListOne: "subTaskListOne",
       subTaskListTwo: "subTaskListTwo",
     );
     taskCards.add(taskUIUpdate);
+    textCollected.text = "";
     setState(() {});
+  }
+
+  Color colorMatcher(String priority) {
+    if (priority == PriorityType.HIGH.name) {}
+    return yellowColor;
   }
 }
