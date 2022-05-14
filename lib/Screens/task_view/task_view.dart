@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_management/Components/task%20components/task_card.dart';
-import 'package:task_management/Screens/task_view_body.dart';
+import 'package:task_management/Screens/task_view/task_view_body.dart';
 import 'package:task_management/Screens/util.dart';
 import 'package:task_management/styles.dart';
 
@@ -14,30 +14,34 @@ class TaskHome extends StatefulWidget {
 class _TaskHomeState extends State<TaskHome> {
   TextEditingController textCollected = TextEditingController();
   List<Widget> taskCards = [];
+  String initialItem = 'LOW';
+  var listItems = ['HIGH', 'MEDIUM', 'LOW'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
-            addTasks(context);
-          },
-          label: const Text(
-            "Add task",
-            style: bodyBoldStyle,
-          ),
-          icon: const Icon(Icons.add),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4),
-          ),
-          backgroundColor: primaryColor,
-          elevation: 0,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          addTasks(context);
+        },
+        label: const Text(
+          "Add task",
+          style: bodyBoldStyle,
         ),
-        body: TaskHomeBody(
-          TaskCards: taskCards,
-        ));
+        icon: const Icon(Icons.add),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+        ),
+        backgroundColor: primaryColor,
+        elevation: 0,
+      ),
+      body: TaskHomeBody(
+        TaskCards: taskCards,
+      ),
+    );
   }
 
+  //Show Modal Bottom Sheet to add tasks
   Future<dynamic> addTasks(BuildContext context) {
     return showModalBottomSheet(
       context: context,
@@ -48,12 +52,36 @@ class _TaskHomeState extends State<TaskHome> {
             children: [
               // checkListWidget("checkListText"),
               Padding(
-                padding: EdgeInsets.fromLTRB(0, 24, 0, 40),
+                padding: const EdgeInsets.fromLTRB(0, 24, 0, 24),
                 child: TextField(
                   controller: textCollected,
-                  decoration: InputDecoration(hintText: "Input Task Name"),
+                  decoration:
+                      const InputDecoration(hintText: "Input Task Name"),
                 ),
               ),
+
+              //Dropdown Menu Items
+              DropdownButton(
+                value: initialItem,
+                items: listItems.map(
+                  (String listItems) {
+                    return DropdownMenuItem(
+                      value: listItems,
+                      child: Text(listItems),
+                    );
+                  },
+                ).toList(),
+                icon: const Icon(Icons.arrow_drop_down),
+                onChanged: (String? newValue) {
+                  setState(
+                    () {
+                      this.initialItem = newValue!;
+                    },
+                  );
+                },
+              ),
+
+              //Add Checklist Button
               Center(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_management/Screens/task_details/task_details.dart';
-import 'package:task_management/Screens/task_view.dart';
+import 'package:task_management/Screens/task_view/task_view.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
