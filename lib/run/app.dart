@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:task_management/Components/task%20components/task_card.dart';
+import 'package:task_management/Screens/add_tasks/add_task_view.dart';
 import 'package:task_management/Screens/task_details/task_details.dart';
 import 'package:task_management/Screens/task_view/task_view.dart';
 
@@ -16,9 +18,10 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         //'/tasklist': (context) => const TaskDetails(),
-        '/homepage': (context) => const TaskHome(),
+        '/homepage': (context) => TaskHome(),
+        '/addTask': (context) => AddTasks(),
       },
-      home: Stack(children: const [TaskHome()]),
+      home: Stack(children: [TaskHome()]),
     );
   }
 }

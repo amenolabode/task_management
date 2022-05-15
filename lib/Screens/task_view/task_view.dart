@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:task_management/Components/task%20components/task_card.dart';
+import 'package:task_management/Screens/add_tasks/add_task_view.dart';
 import 'package:task_management/Screens/task_view/task_view_body.dart';
 import 'package:task_management/Screens/util.dart';
 import 'package:task_management/styles.dart';
 
 class TaskHome extends StatefulWidget {
-  const TaskHome({Key? key}) : super(key: key);
+  TaskHome({Key? key}) : super(key: key);
 
   @override
   State<TaskHome> createState() => _TaskHomeState();
@@ -14,15 +15,18 @@ class TaskHome extends StatefulWidget {
 class _TaskHomeState extends State<TaskHome> {
   TextEditingController textCollected = TextEditingController();
   List<Widget> taskCards = [];
-  String initialItem = 'LOW';
-  var listItems = ['HIGH', 'MEDIUM', 'LOW'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          addTasks(context);
+          print("Check point 1");
+          Navigator.pushNamed(context, '/addTask').then((value) {
+            var taskCard = value as TaskCard;
+            taskCards.add(taskCard);
+            setState(() {});
+          });
         },
         label: const Text(
           "Add task",
@@ -35,89 +39,7 @@ class _TaskHomeState extends State<TaskHome> {
         backgroundColor: primaryColor,
         elevation: 0,
       ),
-      body: TaskHomeBody(
-        TaskCards: taskCards,
-      ),
-    );
-  }
-
-  //Show Modal Bottom Sheet to add tasks
-  Future<dynamic> addTasks(BuildContext context) {
-    return showModalBottomSheet(
-      context: context,
-      builder: (context) {
-        return Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Wrap(
-            children: [
-              // checkListWidget("checkListText"),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 24, 0, 24),
-                child: TextField(
-                  controller: textCollected,
-                  decoration:
-                      const InputDecoration(hintText: "Input Task Name"),
-                ),
-              ),
-
-              //Dropdown Menu Items
-              DropdownButton(
-                value: initialItem,
-                items: listItems.map(
-                  (String listItems) {
-                    return DropdownMenuItem(
-                      value: listItems,
-                      child: Text(listItems),
-                    );
-                  },
-                ).toList(),
-                icon: const Icon(Icons.arrow_drop_down),
-                onChanged: (String? newValue) {
-                  setState(
-                    () {
-                      this.initialItem = newValue!;
-                    },
-                  );
-                },
-              ),
-
-              //Add Checklist Button
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                  child: TextButton(
-                    onPressed: () {},
-                    child: const Text("+ Add checklist"),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 32.0),
-                child: Center(
-                  child: TextButton(
-                    onPressed: () {
-                      addTaskItem();
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: primaryColor,
-                          borderRadius: BorderRadius.circular(50)),
-                      child: const Padding(
-                        padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-                        child: Text(
-                          "Save Task",
-                          style: bodyTextStyle,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              )
-            ],
-          ),
-        );
-      },
+      body: _taskViewBody(),
     );
   }
 
@@ -138,22 +60,47 @@ class _TaskHomeState extends State<TaskHome> {
     );
   }
 
-  void addTaskItem() {
-    String taskCardUpdate = textCollected.text.toString().trim();
-    var taskUIUpdate = TaskCard(
-      cardStatus: "cardStatus",
-      taskNote: taskCardUpdate,
-      priorityColor: colorMatcher(PriorityType.HIGH.name),
-      subTaskListOne: "subTaskListOne",
-      subTaskListTwo: "subTaskListTwo",
-    );
-    taskCards.add(taskUIUpdate);
-    textCollected.text = "";
-    setState(() {});
-  }
-
   Color colorMatcher(String priority) {
     if (priority == PriorityType.HIGH.name) {}
     return yellowColor;
+  }
+
+  Widget _taskViewBody() {
+    return Stack(
+      children: [
+        Container(
+          color: Colors.black,
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 24, 0, 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      "Your Tasks",
+                      style: header,
+                    ),
+                    Text(
+                      "4 of 7 completed.",
+                      style: bodyTextStyleGrey,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Column(
+                  children: taskCards,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }

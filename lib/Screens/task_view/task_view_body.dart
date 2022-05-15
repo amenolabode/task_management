@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:task_management/Screens/add_tasks/add_task_body.dart';
+// import 'package:task_management/globals.dart';
 // import 'package:task_management/Components/task%20components/task_card.dart';
 import 'package:task_management/styles.dart';
 
-class TaskHomeBody extends StatelessWidget {
-  final TaskCards;
+class TaskViewBody extends StatefulWidget {
+  
 
-  const TaskHomeBody({Key? key, required this.TaskCards}) : super(key: key);
+  TaskViewBody({
+    Key? key,
+  }) : super(key: key);
 
   @override
+  State<TaskViewBody> createState() => _TaskViewBodyState();
+}
+
+class _TaskViewBodyState extends State<TaskViewBody> {
+  List<Widget> taskCards = [];
+  
+  @override
   Widget build(BuildContext context) {
-    List<Widget> checkListItems = [];
+    // List<Widget> checkListItems = [];
 
     return Stack(
       children: [
@@ -39,7 +50,7 @@ class TaskHomeBody extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: Column(
-                  children: TaskCards,
+                  children: taskCards,
                 ),
               ),
             ],
